@@ -1,5 +1,4 @@
 import React from "react";
-import Blog from "../blog";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Link } from 'react-router-dom'
@@ -77,12 +76,22 @@ export class SearchInput extends React.Component {
   };
   render() {
     return (
-      <div>
+      <span>
+        <div class="header" style={{
+      
+        }} >
+  <h2>My Blog</h2>
+</div>
+      <div class="row">
+        <div class="card">
+        <h5>Search</h5>
         <input
           type="search"
           placeholder="Пoшук"
           // onChange={this.handleGetValue}
-        />
+          />
+        </div>
+        <div class="card">
         <ul>
           {this.state.posts.map(item => (
             <li
@@ -93,8 +102,11 @@ export class SearchInput extends React.Component {
             </li>
           ))}
         </ul>
-      </div>
+        </div>
+        </div>
+        </span>
     );
+   
   }
 }
 export default connect(

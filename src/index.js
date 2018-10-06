@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import history from "./history";
 import reducer from "./logic/reducer";
 import createSagaMidddelware from "redux-saga";
-import { BlogPage } from './components/blog';
+import { PostPage } from './components/postPage';
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -35,7 +35,7 @@ ReactDOM.render(
                 <Switch>
                 <Route exact path="/" component={SearchInput} />
                 
-               <Route path="/:id" component={BlogPage} />
+               <Route path="/:id" component={PostPage} />
             </Switch>
             </Router>
     </Provider>,
