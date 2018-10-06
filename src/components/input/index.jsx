@@ -2,6 +2,7 @@ import React from "react";
 import Blog from "../blog";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
+import { Link } from 'react-router-dom'
 
 // export class SearchInput extends React.Component {
 
@@ -72,7 +73,7 @@ export class SearchInput extends React.Component {
   };
   handleCheck = e => {
     console.log("handleCheck")
-    alert(JSON.stringify(e));
+    alert(e);
   };
   render() {
     return (
@@ -84,9 +85,11 @@ export class SearchInput extends React.Component {
         />
         <ul>
           {this.state.posts.map(item => (
-            <li   onClick = {this.handleCheck}
+            <li
             key={item.id}>
-              {item.title}
+              <Link to={`/${item.id}`}>
+                  {item.title}
+                </Link>
             </li>
           ))}
         </ul>
