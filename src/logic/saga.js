@@ -7,7 +7,7 @@ function* getAllPost (action) {
             return fetch(" https://jsonplaceholder.typicode.com/posts")
                     .then(res => res.json())
             }
-        ); console.log  ( 'jdvsdlkj' + getAllResponse )
+        ); 
    
         yield put({
             type: actionTypes.FETCH_POSTS_SUCCESS,
@@ -24,7 +24,7 @@ function* getAllPost (action) {
     }
 }
 
-export default function* searchSaga() {
+export default function* postSaga() {
     yield all([
         takeLatest(actionTypes.FETCH_POSTS, getAllPost),
     ]);

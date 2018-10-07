@@ -4,7 +4,6 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Link } from "react-router-dom";
 import "./index.scss";
 
-
 export class SearchInput extends React.Component {
   constructor(props) {
     super(props);
@@ -23,27 +22,26 @@ export class SearchInput extends React.Component {
       });
   };
   componentWillMount() {
-  // this.getInfo()
-   console.log("fetchAllPosts"+JSON.stringify(this.props))
-
-    this.props.fetchAllPosts();
+    this.getInfo();
   }
 
   handleInputChange = event => {
-    let updatedList = this.state.posts;
-    updatedList = updatedList.filter(function(post) {
-      return post.title
-        .toLowerCase()
-        .includes(event.target.value.toLowerCase())||post.body.toLowerCase()
-        .includes(event.target.value.toLowerCase())
-    });
-    this.setState({ posts: updatedList });
+    if (event.target.value === "") {
+      this.getInfo();
+    } else {
+      let updatedList = this.state.posts;
+      updatedList = updatedList.filter(function(post) {
+        return (
+          post.title.toLowerCase().includes(event.target.value.toLowerCase()) ||
+          post.body.toLowerCase().includes(event.target.value.toLowerCase())
+        );
+      });
+      this.setState({ posts: updatedList });
+    }
   };
- 
+
   render() {
-   // const { posts } = this.props;
     return (
-    
       <div class="wrap">
         <header class="top-header">
           <div class="logo">
@@ -61,7 +59,7 @@ export class SearchInput extends React.Component {
               <div class="summary" />
             </div>
           </aside>
-          <main >
+          <main>
             <div class="search">
               <input
                 onChange={this.handleInputChange}
@@ -93,6 +91,6 @@ export class SearchInput extends React.Component {
   }
 }
 export default connect(
- mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(SearchInput);
