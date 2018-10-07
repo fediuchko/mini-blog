@@ -3,22 +3,22 @@ import * as actionTypes from "./actionType";
 
 function* getAllPost (action) {
     try {
-        const searchResponse =  yield call(() => {
+        const getAllResponse =  yield call(() => {
             return fetch(" https://jsonplaceholder.typicode.com/posts")
                     .then(res => res.json())
             }
-        ); console.log  ( 'jdvsdlkj' + searchResponse )
+        ); console.log  ( 'jdvsdlkj' + getAllResponse )
    
         yield put({
-            type: actionTypes.SEARCH_UPDATE_SUCCESS,
+            type: actionTypes.FETCH_POSTS_SUCCESS,
             payload: {
-                ...searchResponse
+                ...getAllResponse
             }
         });
     } catch (error) {
         console.log(error.message);
         yield put({
-            type: actionTypes.SEARCH_UPDATE_FAILED,
+            type: actionTypes.FETCH_POSTS_FAILED,
             payload: { data: {post: [] } }
         });
     }
@@ -26,6 +26,6 @@ function* getAllPost (action) {
 
 export default function* searchSaga() {
     yield all([
-        takeLatest(actionTypes.SEARCH_UPDATE, getAllPost),
+        takeLatest(actionTypes.FETCH_POSTS, getAllPost),
     ]);
 }

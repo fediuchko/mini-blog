@@ -23,7 +23,10 @@ export class SearchInput extends React.Component {
       });
   };
   componentWillMount() {
-    this.getInfo();
+  // this.getInfo()
+   console.log("fetchAllPosts"+JSON.stringify(this.props))
+
+    this.props.fetchAllPosts();
   }
 
   handleInputChange = event => {
@@ -36,12 +39,11 @@ export class SearchInput extends React.Component {
     });
     this.setState({ posts: updatedList });
   };
-  handleCheck = e => {
-    console.log("handleCheck");
-    alert(e);
-  };
+ 
   render() {
+   // const { posts } = this.props;
     return (
+    
       <div class="wrap">
         <header class="top-header">
           <div class="logo">
@@ -59,7 +61,7 @@ export class SearchInput extends React.Component {
               <div class="summary" />
             </div>
           </aside>
-          <main>
+          <main >
             <div class="search">
               <input
                 onChange={this.handleInputChange}
@@ -91,6 +93,6 @@ export class SearchInput extends React.Component {
   }
 }
 export default connect(
-  mapStateToProps,
+ mapStateToProps,
   mapDispatchToProps
 )(SearchInput);

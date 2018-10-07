@@ -9,10 +9,11 @@ export function searchUpdate(payload) {
         payload
     };
 }
-export function fetchAllPosts () {
+export function getAllPosts (payload) {
 
     return {
-        type: FETCH_POSTS
+        type: FETCH_POSTS,
+        payload
     };
 }
 

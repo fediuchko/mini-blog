@@ -53,13 +53,11 @@ export class PostPage extends React.Component {
           </div>
           <div class="content">
             <div>{this.state.post.body}</div>
-            <p class="small">
-              <div>
-                <h5>Name:</h5>
-                {this.state.user.name} <h5> Username:</h5>
-                {this.state.user.username}
-              </div>
-            </p>
+            <div class="small">
+              <h5>Author of the article:</h5>
+              {this.state.user.name} <h5> Username:</h5>
+              {this.state.user.username}
+            </div>
           </div>
         </div>
         <div class="article-2">

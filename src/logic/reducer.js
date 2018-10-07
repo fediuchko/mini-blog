@@ -1,20 +1,12 @@
 import {
-    SEARCH_UPDATE,
-    SEARCH_UPDATE_SUCCESS,
-    SEARCH_UPDATE_FAILED,
+FETCH_POSTS_SUCCESS,
     FETCH_POSTS,
     FETCH_POSTS_FAILED
 } from './actionType';
 
-function searchReducer(state , action) {
+function fetchReducer(state , action) {
     switch (action.type) {
-        case SEARCH_UPDATE: {
-            return {
-                ...state,
-                ...action.payload
-            }
-
-        }
+       
         case FETCH_POSTS: {
             return {
                 ...state,
@@ -30,23 +22,19 @@ function searchReducer(state , action) {
             }
 
         }
-        case SEARCH_UPDATE_SUCCESS: {
+        case FETCH_POSTS_SUCCESS: {
             return {
                 ...state,
                 ...action.payload
             }
         }
-        case SEARCH_UPDATE_FAILED: {
-            return {
-                ...state,
-                ...action.payload
-            }
-
-       }
+    
         default: {
-            return state;
+            return {
+                state
+            }
         }
     }
 }
 
-export default searchReducer;
+export default fetchReducer;
